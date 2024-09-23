@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>INST377 - Lab 4</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <h1>INST377 - Lab 4</h1>
+
+  <div class="row">
+    <div class="section section-name">
+      <form id="alert-form">
+        <label for="name">Name: </label>
+        <input type="text" id="name" name="name" required>
+        <button type="button" onclick="alertMe()">Alert Me!</button>
+      </form>
+    </div>
+
+    <div class="section section-color">
+      <button onclick="changeColor()">Change Color</button>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="section section-text">
+      <form id="text-tester">
+        <label for="text">Text Tester: </label>
+        <input type="text" id="text" name="text" required>
+        <button type="button" onclick="validateText()">Validate Text</button>
+      </form>
+    </div>
+
+    <div class="section section-add">
+      <button onclick="addText()">Add Text</button>
+    </div>
+  </div>
+
+  <script>
+    function alertMe() {
+      const name = document.getElementById('name').value;
+      if (name) {
+        alert(`Hi ${name}!`);
+      }
+    }
+
+    let isBlue = true;
+    function changeColor() {
+      document.body.style.backgroundColor = isBlue ? 'green' : 'blue';
+      isBlue = !isBlue;
+    }
+
+    function validateText() {
+      const text = document.getElementById('text').value;
+      const validation = /[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]+/;
+      if (validation.test(text)) {
+        alert("Special character found!");
+      } else {
+        alert("Text is valid!");
+      }
+    }
+
+    function addText() {
+      const heading = document.querySelector('h1');
+      heading.innerHTML += " Add Text";
+    }
+  </script>
+</body>
+</html>
